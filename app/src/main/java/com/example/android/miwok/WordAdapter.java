@@ -1,6 +1,7 @@
 package com.example.android.miwok;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -8,9 +9,13 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -21,7 +26,8 @@ public class WordAdapter extends ArrayAdapter<Word> {
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
     private Integer mColorResourceId;
 
-    public WordAdapter(@NonNull Context context, @NonNull List<Word> objects, Integer colorResourceId) {
+    public WordAdapter(@NonNull Context context, @NonNull List<Word> objects,
+                       Integer colorResourceId) {
         super(context, 0, objects);
         this.mColorResourceId = colorResourceId;
     }

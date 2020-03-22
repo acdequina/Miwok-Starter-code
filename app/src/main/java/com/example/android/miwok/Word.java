@@ -7,16 +7,19 @@ public class Word {
     private String mDefaultTranslation;
     private String mMiwokTranslation;
     private Integer mImageResourceId;
+    private Integer mAudioResourceId;
 
-    public Word(String defaultTranslation, String miwokTranslation) {
+    public Word(String defaultTranslation, String miwokTranslation, Integer audioResourceId) {
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
+        this.mAudioResourceId = audioResourceId;
     }
 
-    public Word(String defaultTranslation, String miwokTranslation, Integer imageResourceId) {
+    public Word(String defaultTranslation, String miwokTranslation, Integer imageResourceId, Integer audioResourceId) {
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
         this.mImageResourceId = imageResourceId;
+        this.mAudioResourceId = audioResourceId;
     }
 
     public String getDefaultTranslation() {
@@ -41,5 +44,23 @@ public class Word {
 
     public void setImageResourceId(Integer imageResourceId) {
         this.mImageResourceId = imageResourceId;
+    }
+
+    public Integer getAudioResourceId() {
+        return mAudioResourceId;
+    }
+
+    public void setAudioResourceId(Integer audioResourceId) {
+        this.mAudioResourceId = audioResourceId;
+    }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "mDefaultTranslation='" + mDefaultTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mImageResourceId=" + mImageResourceId +
+                ", mAudioResourceId=" + mAudioResourceId +
+                '}';
     }
 }
