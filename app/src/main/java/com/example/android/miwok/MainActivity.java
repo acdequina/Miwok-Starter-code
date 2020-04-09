@@ -17,6 +17,8 @@ package com.example.android.miwok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -25,10 +27,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView mNumbersTextView;
-    private TextView mFamilyTextView;
-    private TextView mColorsTextView;
-    private TextView mPhrasesTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,46 +34,16 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setElevation(0);
 
-        mNumbersTextView = (TextView) findViewById(R.id.numbers);
-        mFamilyTextView = (TextView) findViewById(R.id.family);
-        mColorsTextView = (TextView) findViewById(R.id.colors);
-        mPhrasesTextView = (TextView) findViewById(R.id.phrases);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
 
-        onClickActions();
-    }
+        SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager(),
+                MainActivity.this);
 
-    private void onClickActions() {
-        mNumbersTextView.setOnClickListener(new TextView.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NumbersActivity.class);
-                startActivity(intent);
-            }
-        });
+        viewPager.setAdapter(adapter);
 
-        mFamilyTextView.setOnClickListener(new TextView.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, FamilyActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mColorsTextView.setOnClickListener(new TextView.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ColorsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mPhrasesTextView.setOnClickListener(new TextView.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =  new Intent(MainActivity.this, PhrasesActivity.class);
-                startActivity(intent);
-            }
-        });
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tab);
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
